@@ -147,6 +147,8 @@
 			function startup () {
 				console.log ("startup");
 
+				$("#loading").css ("display", "block");
+
 				if (stringContains (location.search, "sheetKey")) {
 					sheetKey = getParam('sheetKey');
 					}
@@ -218,6 +220,8 @@
 						prevClue ();
 					});
 					self.setInterval (function () {everySecond ()}, 1000);
+
+					$("#loading").animate({ opacity: 0 }, 500 );
 				}
 			</script>
 		<style>
@@ -338,6 +342,25 @@
 				margin-left: 95%;
 				z-index: 30;
 				}
+			#loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				margin-left: 0;
+				margin-top: 0;
+				z-index: 100;
+				background-color: white;
+				opacity: 1;
+				background-image: url('https://cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif');
+				background-position: center;
+				background-repeat: no-repeat;
+				text-align: center;
+				font-size: 4em;
+				display: none;
+			}
+			#loading p {
+				margin-top: 100px;
+			}
 
 			</style>
 		<style> /* styles for phone */
@@ -400,6 +423,7 @@
 					</div>
 				</div>
 			</div>
+			<div id="loading"><p>Loading listcle...</p></div>
 		<script>
 			$(document).ready (function () {
 				startup ();
